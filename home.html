@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saloon BARAT ! - Premium Indian Beauty Saloon</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - Indian Style -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Great+Vibes&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-red: #c0392b;
+            --secondary-red: #e74c3c;
+            --dark-red: #922b21;
+            --primary-orange: #e67e22;
+            --secondary-orange: #f39c12;
+            --gold: #f1c40f;
+            --maroon: #78281f;
+            --light-red: #fadbd8;
+            --mustard: #d68910;
+            --gradient-red: linear-gradient(135deg, var(--primary-red), var(--primary-orange));
+            --gradient-gold: linear-gradient(135deg, var(--gold), var(--mustard));
+            --pattern-bg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23c0392b" fill-opacity="0.1" d="M0,0 L100,0 L100,100 L0,100 Z" /><path fill="none" stroke="%23e74c3c" stroke-width="2" d="M0,50 L100,50 M50,0 L50,100" /></svg>');
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #fffaf0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><path fill="%23fef5e7" d="M30,0 L60,30 L30,60 L0,30 Z" /></svg>');
+            background-size: 80px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--dark-red);
+        }
+        
+        .brand-name {
+            font-family: 'Great Vibes', cursive;
+            font-weight: 700;
+            color: var(--primary-red);
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(192, 57, 43, 0.15);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid var(--gold);
+        }
+        
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background-color: white;
+        }
+        
+        .navbar-brand {
+            font-family: 'Great Vibes', cursive;
+            font-weight: 700;
+            font-size: 2.2rem;
+            color: var(--primary-red) !important;
+            display: flex;
+            align-items: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .navbar-brand i {
+            color: var(--gold);
+            margin-right: 8px;
+            font-size: 1.8rem;
+        }
+        
+        .nav-link {
+            color: var(--maroon) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: var(--primary-orange);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        .nav-link:hover:after, .nav-link.active:after {
+            width: 80%;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-red) !important;
+        }
+        
+        .btn-book {
+            background: var(--gradient-red);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.75rem;
+            border-radius: 30px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+        }
+        
+        .btn-book:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(230, 126, 34, 0.4);
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(120, 40, 31, 0.85), rgba(192, 57, 43, 0.9)), 
+                        url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 12rem 0 8rem;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero h1 {
+            color: white;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><path fill="none" stroke="%23f1c40f" stroke-width="2" d="M20,20 L180,20 L180,180 L20,180 Z" /><circle fill="%23f1c40f" cx="100" cy="100" r="10" /><path fill="none" stroke="%23f1c40f" stroke-width="1" d="M50,50 L150,150 M50,150 L150,50" /></svg>');
+            background-size: 200px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            background-color: #fffaf0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: var(--gradient-red);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(192, 57, 43, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            margin-bottom: 2rem;
+            border: 2px solid transparent;
+            position: relative;
+        }
+        
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-red);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(192, 57, 43, 0.2);
+            border-color: var(--primary-orange);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--light-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem auto 1.5rem;
+            color: var(--primary-red);
+            font-size: 2rem;
+            border: 2px solid var(--gold);
+        }
+        
+        .service-card h4 {
+            margin-bottom: 1rem;
+            padding: 0 1.5rem;
+            color: var(--maroon);
+        }
+        
+        .service-card p {
+            color: #666;
+            padding: 0 1.5rem 1.5rem;
+        }
+        
+        .service-price {
+            color: var(--primary-red);
+            font-weight: 700;
+            font-size: 1.3rem;
+            padding: 0 1.5rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .service-price i {
+            color: var(--gold);
+        }
+        
+        /* Stylists Section */
+        .stylists {
+            padding: 6rem 0;
+            background: linear-gradient(to right, #fffaf0, #fff5e6);
+            position: relative;
+        }
+        
+        .stylist-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(192, 57, 43, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            border: 2px solid transparent;
+        }
+        
+        .stylist-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-orange);
+        }
+        
+        .stylist-img {
+            height: 300px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .stylist-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .stylist-info h4 {
+            margin-bottom: 0.5rem;
+            color: var(--maroon);
+        }
+        
+        .stylist-role {
+            color: var(--primary-orange);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .stylist-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .stylist-social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--light-red);
+            color: var(--primary-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .stylist-social a:hover {
+            background: var(--primary-red);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Mehndi Special Section */
+        .mehndi-special {
+            padding: 6rem 0;
+            background: linear-gradient(rgba(120, 40, 31, 0.9), rgba(192, 57, 43, 0.9)), 
+                        url('https://images.unsplash.com/photo-1597079558132-8d84397d089d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+        }
+        
+        .mehndi-special h2 {
+            color: white;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .mehndi-special p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .mehndi-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><path fill="none" stroke="%23f1c40f" stroke-width="2" d="M20,20 Q75,5 130,20 Q145,75 130,130 Q75,145 20,130 Q5,75 20,20 Z" /><path fill="none" stroke="%23f1c40f" stroke-width="1.5" d="M40,40 Q75,30 110,40 Q120,75 110,110 Q75,120 40,110 Q30,75 40,40 Z" /></svg>');
+            background-size: 150px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        
+        /* Bridal Section */
+        .bridal-section {
+            padding: 6rem 0;
+            background-color: #fffaf0;
+            position: relative;
+        }
+        
+        .bridal-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(192, 57, 43, 0.15);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            border: 3px solid var(--gold);
+        }
+        
+        .bridal-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(192, 57, 43, 0.25);
+        }
+        
+        .bridal-img {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .bridal-info {
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .bridal-info h4 {
+            margin-bottom: 1rem;
+            color: var(--maroon);
+        }
+        
+        .bridal-price {
+            color: var(--primary-red);
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--light-red), #fef5e7);
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin: 1rem;
+            position: relative;
+            border-left: 5px solid var(--primary-orange);
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            font-size: 5rem;
+            color: var(--light-red);
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .testimonial-rating {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+        
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+            border: 2px solid var(--gold);
+        }
+        
+        /* Booking Section */
+        .booking {
+            padding: 6rem 0;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .booking:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: var(--gradient-red);
+        }
+        
+        .booking-form {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 15px 40px rgba(192, 57, 43, 0.15);
+            border: 2px solid var(--gold);
+        }
+        
+        .form-control, .form-select {
+            border: 2px solid #f0e6d6;
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 0 0.2rem rgba(230, 126, 34, 0.25);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--maroon);
+            color: white;
+            padding: 4rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-gold);
+        }
+        
+        .footer-logo {
+            font-family: 'Great Vibes', cursive;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .footer-links h5 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h5:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: var(--primary-orange);
+            bottom: 0;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.75rem;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary-orange);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .navbar-brand {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 8rem 0 6rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .booking-form {
+                padding: 2rem;
+            }
+            
+            .mehndi-special h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        /* Decorative Elements */
+        .diya-decoration {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: var(--gold);
+            border-radius: 50% 50% 40% 40%;
+            box-shadow: 0 0 20px rgba(241, 196, 15, 0.5);
+            z-index: 1;
+        }
+        
+        .diya-decoration:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            background: var(--primary-orange);
+            border-radius: 50%;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 15px rgba(230, 126, 34, 0.7);
+        }
+        
+        /* Indian Pattern Overlay */
+        .pattern-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="none" stroke="%23c0392b" stroke-width="0.5" d="M0,0 L100,100 M100,0 L0,100" /><circle fill="%23e74c3c" cx="50" cy="50" r="3" /></svg>');
+            background-size: 100px;
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Price Tags */
+        .price-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gradient-red);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+        
+        /* Special Offer Banner */
+        .offer-banner {
+            background: var(--gradient-red);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(192, 57, 43, 0.3);
+        }
+        
+        .offer-banner:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><path fill="none" stroke="white" stroke-width="1" opacity="0.2" d="M0,30 L60,30 M30,0 L30,60" /></svg>');
+        }
+        
+        .offer-banner h3 {
+            color: white;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .offer-banner h3 i {
+            color: var(--gold);
+            margin: 0 10px;
+        }
+        
+        /* Bridal Package */
+        .bridal-package {
+            background: linear-gradient(135deg, #fffaf0, #ffeaa7);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            border: 3px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bridal-package:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: var(--primary-red);
+            border-radius: 50%;
+            transform: translate(50px, -50px);
+            opacity: 0.1;
+        }
+        
+        .bridal-package:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background: var(--primary-orange);
+            border-radius: 50%;
+            transform: translate(-30px, 30px);
+            opacity: 0.1;
+        }
+        
+        .bridal-package h3 {
+            color: var(--maroon);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .bridal-package ul {
+            list-style: none;
+            padding: 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .bridal-package ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #f0e6d6;
+        }
+        
+        .bridal-package ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .bridal-package ul li i {
+            color: var(--primary-orange);
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-hands"></i> Saloon BARAT !
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#stylists">Stylists</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#bridal">Bridal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#mehndi">Mehndi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                
+                <button class="btn btn-book" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                    <i class="fas fa-calendar-alt"></i> Book Now
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-pattern"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-in">
+                    <h1>Experience Royal Indian Beauty Care</h1>
+                    <p>Welcome to <span class="brand-name">Saloon BARAT !</span>, where tradition meets modern elegance. Our expert stylists bring you the finest Indian beauty treatments with a touch of luxury.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <button class="btn btn-book" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                            <i class="fas fa-calendar-alt"></i> Book Appointment
+                        </button>
+                        <a href="#services" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-spa"></i> Our Services
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- Decorative Diya -->
+                    <div class="diya-decoration" style="top: 20px; right: 50px;"></div>
+                    <div class="diya-decoration" style="bottom: 40px; left: 30px;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offer -->
+    <div class="container mt-4">
+        <div class="offer-banner fade-in">
+            <h3><i class="fas fa-gift"></i> Special Festival Offer: 30% Off on All Bridal Packages <i class="fas fa-gift"></i></h3>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="pattern-overlay"></div>
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Premium Services</h2>
+                <p class="text-muted">Traditional Indian beauty treatments with modern techniques</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card fade-in" data-aos="fade-up">
+                        <div class="service-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <h4>Traditional Hair Styling</h4>
+                        <p>Classic Indian hairstyles including braids, buns, and modern fusion styles for all occasions.</p>
+                        <div class="service-price"><i class="fas fa-rupee-sign"></i> 500 - 2000</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card fade-in" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h4>Hair Coloring & Highlights</h4>
+                        <p>Expert coloring services using premium products, including traditional henna treatments.</p>
+                        <div class="service-price"><i class="fas fa-rupee-sign"></i> 800 - 3000</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card fade-in" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h4>Ayurvedic Spa Treatments</h4>
+                        <p>Rejuvenating spa therapies using traditional Ayurvedic techniques and natural ingredients.</p>
+                        <div class="service-price"><i class="fas fa-rupee-sign"></i> 1200 - 4000</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card fade-in" data-aos="fade-up">
+                        <div class="service-icon">
+                            <i class="fas fa-hand-sparkles"></i>
+                        </div>
+                        <h4>Bridal Manicure & Pedicure</h4>
+                        <p>Luxurious nail care with intricate designs, perfect for weddings and special occasions.</p>
+                        <div class="service-price"><i class="fas fa-rupee-sign"></i> 600 - 1800</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card fade-in" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h4>Traditional Makeup Artistry</h4>
+                        <p>Authentic Indian bridal and festival makeup with attention to cultural details.</p>
+                        <div class="service-price"><i class="fas fa-rupee-sign"></i> 1500 - 5000</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card fade-in" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4>Herbal Hair Treatments</h4>
+                        <p>Natural hair therapies using traditional herbs and oils for strong, healthy hair.</p>
+                        <div class="service-price"><i class="fas fa-rupee-sign"></i> 700 - 2500</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bridal Section -->
+    <section class="bridal-section" id="bridal">
+        <div class="container">
+            <div class="section-title">
+                <h2>Bridal Packages</h2>
+                <p class="text-muted">Complete bridal makeover packages for your special day</p>
+            </div>
+            
+            <div class="bridal-package fade-in" data-aos="fade-up">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h3>Royal Bridal Package</h3>
+                        <p>Complete bridal makeover with traditional elements and modern elegance.</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Traditional Bridal Makeup</li>
+                                    <li><i class="fas fa-check"></i> Intricate Hair Styling</li>
+                                    <li><i class="fas fa-check"></i> Professional Mehndi Application</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Spa & Relaxation Therapy</li>
+                                    <li><i class="fas fa-check"></i> Nail Art & Care</li>
+                                    <li><i class="fas fa-check"></i> Pre-Wedding Skin Care</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <div class="bridal-price">Starting at <br><span style="font-size: 2.5rem;">₹15,000</span></div>
+                        <button class="btn btn-book mt-3" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                            <i class="fas fa-calendar-alt"></i> Book Package
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="bridal-card fade-in" data-aos="fade-up">
+                        <div class="price-tag">₹8,000</div>
+                        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             class="bridal-img" alt="Traditional Makeup">
+                        <div class="bridal-info">
+                            <h4>Traditional Bridal Makeup</h4>
+                            <p>Classic Indian bridal look with authentic jewelry setting</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="bridal-card fade-in" data-aos="fade-up" data-aos-delay="100">
+                        <div class="price-tag">₹5,000</div>
+                        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             class="bridal-img" alt="Hair Styling">
+                        <div class="bridal-info">
+                            <h4>Bridal Hair Styling</h4>
+                            <p>Intricate braids, buns, and accessory setting</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="bridal-card fade-in" data-aos="fade-up" data-aos-delay="200">
+                        <div class="price-tag">₹12,000</div>
+                        <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             class="bridal-img" alt="Complete Package">
+                        <div class="bridal-info">
+                            <h4>Complete Bridal Package</h4>
+                            <p>Full day beauty services for the bride</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mehndi Special Section -->
+    <section class="mehndi-special" id="mehndi">
+        <div class="mehndi-pattern"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-in" data-aos="fade-right">
+                    <h2>Traditional Mehndi Artistry</h2>
+                    <p>Our expert mehndi artists create intricate traditional and contemporary designs using natural henna. Perfect for weddings, festivals, and special occasions.</p>
+                    <ul class="text-white" style="list-style: none; padding: 0;">
+                        <li class="mb-2"><i class="fas fa-check-circle text-gold mr-2"></i> Natural, high-quality henna</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-gold mr-2"></i> Traditional Rajasthani, Arabic & Modern designs</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-gold mr-2"></i> Bridal mehndi packages available</li>
+                        <li><i class="fas fa-check-circle text-gold mr-2"></i> Custom designs for all occasions</li>
+                    </ul>
+                    <button class="btn btn-book mt-3" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                        <i class="fas fa-paint-brush"></i> Book Mehndi Session
+                    </button>
+                </div>
+                <div class="col-lg-6">
+                    <!-- Decorative Diya -->
+                    <div class="diya-decoration" style="top: 50px; left: 50px;"></div>
+                    <div class="diya-decoration" style="bottom: 50px; right: 50px;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stylists Section -->
+    <section class="stylists" id="stylists">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Expert Stylists</h2>
+                <p class="text-muted">Trained in traditional Indian beauty techniques with modern expertise</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stylist-card fade-in" data-aos="fade-up">
+                        <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             class="stylist-img" alt="Priya Sharma">
+                        <div class="stylist-info">
+                            <h4>Priya Sharma</h4>
+                            <div class="stylist-role">Bridal Makeup Expert</div>
+                            <p>Specializing in traditional Indian bridal makeup with 12+ years of experience.</p>
+                            <div class="stylist-social">
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="stylist-card fade-in" data-aos="fade-up" data-aos-delay="100">
+                        <img src="https://images.unsplash.com/photo-1562788869-4ed32648eb72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             class="stylist-img" alt="Rajesh Verma">
+                        <div class="stylist-info">
+                            <h4>Rajesh Verma</h4>
+                            <div class="stylist-role">Hair Styling Specialist</div>
+                            <p>Expert in traditional Indian hairstyles and modern fusion techniques.</p>
+                            <div class="stylist-social">
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="stylist-card fade-in" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             class="stylist-img" alt="Anjali Patel">
+                        <div class="stylist-info">
+                            <h4>Anjali Patel</h4>
+                            <div class="stylist-role">Mehndi Artist</div>
+                            <p>Creating intricate traditional mehndi designs for over 8 years.</p>
+                            <div class="stylist-social">
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="stylist-card fade-in" data-aos="fade-up" data-aos-delay="300">
+                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             class="stylist-img" alt="Suresh Kumar">
+                        <div class="stylist-info">
+                            <h4>Suresh Kumar</h4>
+                            <div class="stylist-role">Ayurvedic Therapist</div>
+                            <p>Certified in traditional Ayurvedic treatments and spa therapies.</p>
+                            <div class="stylist-social">
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Testimonials</h2>
+                <p class="text-muted">What our clients say about their experience</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="testimonial-card fade-in" data-aos="fade-up">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Saloon BARAT ! made me feel like a royal bride on my wedding day. Their attention to traditional details was exceptional!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Neha Kapoor">
+                            <div>
+                                <h5>Neha Kapoor</h5>
+                                <p>Bride, December 2023</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="testimonial-card fade-in" data-aos="fade-up" data-aos-delay="100">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The mehndi designs were breathtaking! Traditional yet modern, exactly what I wanted for my sister's wedding."</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ritu Singh">
+                            <div>
+                                <h5>Ritu Singh</h5>
+                                <p>Client for 2 years</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="testimonial-card fade-in" data-aos="fade-up" data-aos-delay="200">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p>"The Ayurvedic spa treatments are heavenly! I always leave feeling completely rejuvenated with glowing skin."</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sunita Reddy">
+                            <div>
+                                <h5>Sunita Reddy</h5>
+                                <p>Regular Client</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking & Contact -->
+    <section class="booking" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="booking-form fade-in" data-aos="fade-right">
+                        <h3 class="mb-4">Book Your Appointment</h3>
+                        <form id="appointmentForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Full Name</label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="phone" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="phone" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" id="email">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="service" class="form-label">Select Service</label>
+                                        <select class="form-select" id="service" required>
+                                            <option value="" disabled selected>Choose a service</option>
+                                            <option value="bridal">Bridal Package</option>
+                                            <option value="mehndi">Mehndi Art</option>
+                                            <option value="hair">Hair Styling</option>
+                                            <option value="makeup">Traditional Makeup</option>
+                                            <option value="spa">Ayurvedic Spa</option>
+                                            <option value="nails">Nail Art</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="date" class="form-label">Preferred Date</label>
+                                        <input type="date" class="form-control" id="date" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="time" class="form-label">Preferred Time</label>
+                                        <select class="form-select" id="time" required>
+                                            <option value="" disabled selected>Select time</option>
+                                            <option value="9:00">9:00 AM</option>
+                                            <option value="10:00">10:00 AM</option>
+                                            <option value="11:00">11:00 AM</option>
+                                            <option value="12:00">12:00 PM</option>
+                                            <option value="13:00">1:00 PM</option>
+                                            <option value="14:00">2:00 PM</option>
+                                            <option value="15:00">3:00 PM</option>
+                                            <option value="16:00">4:00 PM</option>
+                                            <option value="17:00">5:00 PM</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Additional Notes</label>
+                                <textarea class="form-control" id="message" rows="4" placeholder="Any special requests or requirements"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-book w-100">
+                                <i class="fas fa-calendar-alt"></i> Book Appointment
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="appointment-widget fade-in" data-aos="fade-left" style="background: var(--gradient-red); padding: 2rem; border-radius: 15px; color: white; margin-top: 2rem;">
+                        <h4 style="color: white;">Why Choose Saloon BARAT !?</h4>
+                        <div class="widget-feature">
+                            <i class="fas fa-award" style="color: var(--gold);"></i>
+                            <div>
+                                <h5 class="mb-1" style="color: white;">Traditional Expertise</h5>
+                                <p>Masters in Indian beauty techniques</p>
+                            </div>
+                        </div>
+                        <div class="widget-feature">
+                            <i class="fas fa-leaf" style="color: var(--gold);"></i>
+                            <div>
+                                <h5 class="mb-1" style="color: white;">Natural Products</h5>
+                                <p>Ayurvedic and herbal treatments</p>
+                            </div>
+                        </div>
+                        <div class="widget-feature">
+                            <i class="fas fa-hands" style="color: var(--gold);"></i>
+                            <div>
+                                <h5 class="mb-1" style="color: white;">Cultural Authenticity</h5>
+                                <p>Genuine traditional designs & styles</p>
+                            </div>
+                        </div>
+                        <div class="widget-feature">
+                            <i class="fas fa-clock" style="color: var(--gold);"></i>
+                            <div>
+                                <h5 class="mb-1" style="color: white;">Flexible Hours</h5>
+                                <p>Open 7 days, 8 AM - 9 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 fade-in" data-aos="fade-up">
+                        <h4 class="mb-3">Contact Info</h4>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-map-marker-alt text-primary-red me-3" style="color: var(--primary-red);"></i>
+                            <div>123 Chandni Chowk, Delhi 110006</div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-phone text-primary-red me-3" style="color: var(--primary-red);"></i>
+                            <div>+91 98765 43210</div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-envelope text-primary-red me-3" style="color: var(--primary-red);"></i>
+                            <div>info@saloonbarat.com</div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-clock text-primary-red me-3" style="color: var(--primary-red);"></i>
+                            <div>Mon-Sun: 8:00 AM - 9:00 PM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <a href="#" class="footer-logo"><i class="fas fa-hands"></i> Saloon BARAT !</a>
+                    <p class="opacity-75">A premium Indian beauty saloon offering traditional treatments with modern elegance. Our mission is to enhance your natural beauty with authentic Indian techniques.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Services</h5>
+                        <a href="#services">Hair Styling</a>
+                        <a href="#services">Mehndi Art</a>
+                        <a href="#bridal">Bridal Packages</a>
+                        <a href="#services">Ayurvedic Spa</a>
+                        <a href="#services">Makeup</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <a href="#home">Home</a>
+                        <a href="#services">Services</a>
+                        <a href="#stylists">Stylists</a>
+                        <a href="#bridal">Bridal</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <h5>Newsletter</h5>
+                    <p class="opacity-75 mb-3">Subscribe for traditional beauty tips and special offers.</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Your email address">
+                        <button class="btn btn-primary" type="button" style="background: var(--primary-orange); border: none;">Subscribe</button>
+                    </div>
+                    <div class="d-flex align-items-center mt-3">
+                        <i class="fas fa-rupee-sign text-gold me-2"></i>
+                        <span>We accept all major payment methods</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Saloon BARAT !. All rights reserved. | Crafted with <i class="fas fa-heart text-danger"></i> for Indian beauty traditions</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="background: var(--gradient-red); color: white;">
+                    <h5 class="modal-title">Book Your Appointment</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="modalBookingForm">
+                        <div class="mb-3">
+                            <label for="modalName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="modalName" required>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="modalPhone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="modalPhone" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="modalService" class="form-label">Service</label>
+                                <select class="form-select" id="modalService" required>
+                                    <option value="" disabled selected>Select service</option>
+                                    <option value="bridal">Bridal Package</option>
+                                    <option value="mehndi">Mehndi Art</option>
+                                    <option value="hair">Hair Styling</option>
+                                    <option value="makeup">Traditional Makeup</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="modalDate" class="form-label">Date</label>
+                                <input type="date" class="form-control" id="modalDate" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="modalTime" class="form-label">Time</label>
+                                <select class="form-select" id="modalTime" required>
+                                    <option value="" disabled selected>Select time</option>
+                                    <option value="9:00">9:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="13:00">1:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-book w-100">
+                            <i class="fas fa-calendar-alt"></i> Confirm Booking
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if(navbarCollapse.classList.contains('show')) {
+                        navbarCollapse.classList.remove('show');
+                    }
+                }
+            });
+        });
+
+        // Form submission handling
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                service: document.getElementById('service').value,
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Booking...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                alert('धन्यवाद! Your appointment has been booked successfully. We will contact you shortly to confirm.');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Reset form
+                this.reset();
+                
+                // Close modal if open
+                const bookingModal = bootstrap.Modal.getInstance(document.getElementById('bookingModal'));
+                if(bookingModal) bookingModal.hide();
+            }, 1500);
+        });
+
+        // Modal form submission
+        document.getElementById('modalBookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Booking...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Appointment booked successfully! We will call you to confirm.');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                this.reset();
+                
+                // Close modal
+                const bookingModal = bootstrap.Modal.getInstance(document.getElementById('bookingModal'));
+                if(bookingModal) bookingModal.hide();
+            }, 1500);
+        });
+
+        // Set minimum date to today for date inputs
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').min = today;
+        document.getElementById('modalDate').min = today;
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with fade-in class
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default date to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const tomorrowStr = tomorrow.toISOString().split('T')[0];
+            document.getElementById('date').value = tomorrowStr;
+            document.getElementById('modalDate').value = tomorrowStr;
+            
+            // Add active class to current nav item
+            const currentPage = window.location.hash || '#home';
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Festival Countdown (example)
+        function updateFestivalCountdown() {
+            const diwaliDate = new Date('October 24, 2024 00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = diwaliDate - now;
+            
+            if(distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const banner = document.querySelector('.offer-banner h3');
+                if(banner && days <= 30) {
+                    banner.innerHTML = `<i class="fas fa-gift"></i> Diwali Special: ${30-days} Days Left for 30% Off <i class="fas fa-gift"></i>`;
+                }
+            }
+        }
+        
+        // Update countdown on load
+        updateFestivalCountdown();
+    </script>
+</body>
+</html>
